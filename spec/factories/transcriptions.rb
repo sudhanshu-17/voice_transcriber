@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :transcription do
-    content { "MyText" }
-    summary { "MyText" }
-    status { "MyString" }
-    session_id { "MyString" }
+    session_id { SecureRandom.uuid }
+    content { "This is a test transcription content." }
+    status { 'processing' }
   end
 end
