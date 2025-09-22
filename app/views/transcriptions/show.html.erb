@@ -1,0 +1,44 @@
+<div class="container" data-controller="voice-recorder" data-session-id="<%= session[:transcription_session] %>">
+  <h1>Voice Transcription</h1>
+
+  <div class="controls">
+    <button class="btn btn-success" data-action="click->voice-recorder#startRecording" data-voice-recorder-target="startButton">
+      Start Listening
+    </button>
+
+    <button class="btn btn-danger" data-action="click->voice-recorder#stopRecording" data-voice-recorder-target="stopButton" style="display: none;">
+      Stop Listening
+    </button>
+
+    <span class="status" data-voice-recorder-target="status">Ready</span>
+  </div>
+
+  <div class="audio-visualizer" data-voice-recorder-target="visualizer" style="display: none;">
+    <div class="wave-animation"></div>
+  </div>
+
+  <div class="transcription-section">
+    <h3>Live Transcription</h3>
+    <div class="transcription-box" data-voice-recorder-target="liveTranscription">
+      <p class="live-text">Click "Start Listening" to begin recording...</p>
+    </div>
+  </div>
+
+  <div class="final-section" data-voice-recorder-target="finalSection" style="display: none;">
+    <h3>Final Transcription</h3>
+    <div class="transcription-box" data-voice-recorder-target="finalTranscription"></div>
+
+    <button class="btn btn-primary" data-action="click->voice-recorder#generateSummary" data-voice-recorder-target="summaryButton">
+      Generate Summary
+    </button>
+
+    <div class="summary-section" data-voice-recorder-target="summarySection" style="display: none;">
+      <h3>Summary</h3>
+      <div class="summary-box" data-voice-recorder-target="summaryContent"></div>
+    </div>
+
+    <button class="btn btn-secondary" data-action="click->voice-recorder#copyTranscription">
+      📋 Copy Transcription
+    </button>
+  </div>
+</div>
