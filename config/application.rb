@@ -23,5 +23,14 @@ module VoiceTranscriber
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '/transcriptions',
+                 headers: :any,
+                 methods: [:post],
+                 expose: ['Content-Length']
+      end
+    end if defined?(Rack::Cors)
   end
 end
