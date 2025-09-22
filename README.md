@@ -1,24 +1,38 @@
-# README
+# Voice Transcription & Summarization Web App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails application that provides real-time voice transcription and AI-powered summarization using modern web technologies.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+-  **Real-time Voice Recording**: Browser-based audio capture with visual feedback
+-  **Live Transcription**: Word-by-word transcription display while recording
+-  **AI Summarization**: Automatic conversation summaries using OpenAI
+-  **Speaker Diarization**: Multiple speaker detection (when supported by API)
+-  **Copy & Export**: Easy transcription copying and sharing
+-  **Responsive Design**: Works on desktop and mobile devices
 
-* System dependencies
+## Tech Stack
 
-* Configuration
+- **Backend**: Ruby on Rails 7.0+
+- **Frontend**: Stimulus.js, Turbo, vanilla JavaScript
+- **Database**: PostgreSQL
+- **Speech-to-Text**: Deepgram API
+- **AI Summary**: OpenAI GPT-3.5-turbo
+- **Styling**: Custom CSS with modern design patterns
 
-* Database creation
+## Prerequisites
 
-* Database initialization
+- Ruby 3.0+
+- Rails 7.0+
+- PostgreSQL
+- Redis (for future caching/sessions)
+- API Keys:
+  - [Deepgram](https://deepgram.com/) for speech-to-text
+  - [OpenAI](https://openai.com/) for summarization
 
-* How to run the test suite
+## Installation
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. **Clone the repository**
+```bash
+   git clone <repository-url>
+   cd voice_transcriber
