@@ -31,9 +31,9 @@ RSpec.describe SummaryService do
             .to_return(
                 status: 200,
                 body: {
-                    choices: [{
+                    choices: [ {
                                   message: { content: "This is a test summary." }
-                              }]
+                              } ]
                 }.to_json
             )
       end

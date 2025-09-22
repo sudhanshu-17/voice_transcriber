@@ -12,11 +12,11 @@ class TranscriptionsController < ApplicationController
     # Handle both file upload and base64 audio data
     audio_data = if params[:audio_file].present?
                    params[:audio_file].read
-                 elsif params[:audio_data].present?
+    elsif params[:audio_data].present?
                    Base64.decode64(params[:audio_data])
-                 else
-                   return render json: { error: 'No audio data provided' }, status: 400
-                 end
+    else
+                   return render json: { error: "No audio data provided" }, status: 400
+    end
 
     result = service.transcribe_audio(audio_data, @session_id)
 
@@ -44,9 +44,9 @@ class TranscriptionsController < ApplicationController
         status: transcription.status
     }
   rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Transcription not found' }, status: 404
+    render json: { error: "Transcription not found" }, status: 404
   rescue => e
-    render json: { error: 'Summary generation failed' }, status: 500
+    render json: { error: "Summary generation failed" }, status: 500
   end
 
   def finalize
@@ -62,7 +62,7 @@ class TranscriptionsController < ApplicationController
         }
     }
   rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Transcription not found' }, status: 404
+    render json: { error: "Transcription not found" }, status: 404
   end
 
   private

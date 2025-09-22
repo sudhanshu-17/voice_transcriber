@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   # # Render dynamic PWA files from app/views/pwa/*
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  root 'home#index'
+  root "home#index"
 
-  get '/transcribe', to: 'transcriptions#show'
-  post '/transcriptions', to: 'transcriptions#create'
-  get '/transcriptions/:id/summary', to: 'transcriptions#summary'
-  patch '/transcriptions/:id/finalize', to: 'transcriptions#finalize'
+  get "/transcribe", to: "transcriptions#show"
+  post "/transcriptions", to: "transcriptions#create"
+  get "/transcriptions/:id/summary", to: "transcriptions#summary"
+  patch "/transcriptions/:id/finalize", to: "transcriptions#finalize"
   # Defines the root path route ("/")
   # root "posts#index"
 end

@@ -56,11 +56,11 @@ group :test do
   gem "selenium-webdriver"
 end
 # Gemfile additions
-gem 'httparty', '~> 0.21'
-gem 'redis', '~> 5.0'
+gem "httparty", "~> 0.21"
+gem "redis", "~> 5.0"
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'webmock'
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "webmock"
 end

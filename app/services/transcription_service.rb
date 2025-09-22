@@ -3,23 +3,23 @@ class TranscriptionService
   include HTTParty
 
   def initialize
-    @api_key = Rails.application.credentials.dig(:deepgram, :api_key) || ENV['DEEPGRAM_API_KEY']
-    @base_uri = 'https://api.deepgram.com/v1/listen'
+    @api_key = Rails.application.credentials.dig(:deepgram, :api_key) || ENV["DEEPGRAM_API_KEY"]
+    @base_uri = "https://api.deepgram.com/v1/listen"
   end
 
   def transcribe_audio(audio_data, session_id)
-    return { error: 'API key not configured' } unless @api_key
+    return { error: "API key not configured" } unless @api_key
 
     response = HTTParty.post(@base_uri,
                              headers: {
-                                 'Authorization' => "Token #{@api_key}",
-                                 'Content-Type' => 'audio/wav'
+                                 "Authorization" => "Token #{@api_key}",
+                                 "Content-Type" => "audio/wav"
                              },
                              body: audio_data,
                              query: {
-                                 'punctuate' => true,
-                                 'diarize' => true,
-                                 'smart_format' => true
+                                 "punctuate" => true,
+                                 "diarize" => true,
+                                 "smart_format" => true
                              }
     )
 
@@ -38,8 +38,8 @@ class TranscriptionService
   def parse_deepgram_response(response, session_id)
     transcription = Transcription.find_or_create_by_session(session_id)
 
-    if response.dig('results', 'channels')
-      text = response.dig('results', 'channels', 0, 'alternatives', 0, 'transcript')
+    if response.dig("results", "channels")
+      text = response.dig("results", "channels", 0, "alternatives", 0, "transcript")
       transcription.append_content(text) if text.present?
 
       {
@@ -49,7 +49,7 @@ class TranscriptionService
           transcription_id: transcription.id
       }
     else
-      { error: 'Invalid response format' }
+      { error: "Invalid response format" }
     end
   end
 end
