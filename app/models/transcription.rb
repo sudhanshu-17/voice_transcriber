@@ -1,0 +1,2 @@
+class Transcription < ApplicationRecord
+end
