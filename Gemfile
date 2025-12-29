@@ -56,7 +56,7 @@ group :test do
   gem "selenium-webdriver"
 end
 # Gemfile additions
-gem "httparty", "~> 0.21"
+gem "httparty", "~> 0.24"
 gem "redis", "~> 5.0"
 
 group :development, :test do
